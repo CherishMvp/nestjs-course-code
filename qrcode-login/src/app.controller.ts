@@ -30,7 +30,8 @@ export class AppController {
   @Get('qrcode/generate')
   async generate() {
     const uuid = randomUUID();
-    const dataUrl = await qrcode.toDataURL(`http://192.168.31.56:3000/pages/confirm.html?id=${uuid}`);
+    // crypto 模块生成一个随机的 uuid。
+    const dataUrl = await qrcode.toDataURL(`http://192.168.31.56:3099/pages/confirm.html?id=${uuid}`);
 
     map.set(`qrcode_${uuid}`, {
       status: 'noscan'
@@ -116,7 +117,7 @@ export class AppController {
     if(user.password !== password) {
       throw new UnauthorizedException('密码错误');
     }
-
+// 不知道秘钥，jwt中就算使用用户密码传参，也不会泄露
     return {
       token: await this.jwtService.sign({
         userId: user.id

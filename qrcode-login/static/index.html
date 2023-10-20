@@ -10,14 +10,14 @@
     <img id="img" src="" alt=""/>
     <div id="info"></div>
     <script>
-        axios.get('http://localhost:3000/qrcode/generate').then(res => {
+        axios.get('http://localhost:3099/qrcode/generate').then(res => {
             document.getElementById('img').src = res.data.img;
 
             queryStatus(res.data.qrcode_id);
         })
 
         function queryStatus(id) {
-            axios.get('http://localhost:3000/qrcode/check?id=' + id).then(res => {
+            axios.get('http://localhost:3099/qrcode/check?id=' + id).then(res => {
                 const status = res.data.status;
 
                 let content = '';

@@ -41,7 +41,7 @@
 
         let token = '';
         document.getElementById('dong').addEventListener('click', () => {
-            axios.get('http://192.168.31.56:3000/login', {
+            axios.get('http://127.0.0.1:3099/login', {
                 params: {
                     username: 'dong',
                     password: '111'
@@ -52,7 +52,7 @@
         });
 
         document.getElementById('guang').addEventListener('click', () => {
-            axios.get('http://192.168.31.56:3000/login', {
+            axios.get('http://127.0.0.1:3099/login', {
                 params: {
                     username: 'guang',
                     password: '222'
@@ -62,13 +62,13 @@
             });
         });
 
-        axios.get('http://192.168.31.56:3000/qrcode/scan?id=' + id).catch(e => {
+        axios.get('http://127.0.0.1:3099/qrcode/scan?id=' + id).catch(e => {
             alert(e);
             alert('二维码已过期');
         });
         
         document.getElementById('confirm').addEventListener('click', () => {
-            axios.get('http://192.168.31.56:3000/qrcode/confirm?id=' + id, {
+            axios.get('http://127.0.0.1:3099/qrcode/confirm?id=' + id, {
                 headers: {
                     authorization: 'Bearer ' + token
                 }
@@ -78,7 +78,7 @@
         });
 
         document.getElementById('cancel').addEventListener('click', () => {
-            axios.get('http://192.168.31.56:3000/qrcode/cancel?id=' + id).catch(e => {
+            axios.get('http://127.0.0.1:3099/qrcode/cancel?id=' + id).catch(e => {
                 alert('二维码已过期');
             });
         });
